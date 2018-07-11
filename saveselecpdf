@@ -1,0 +1,4 @@
+Sub SaveAsPDF()
+Selection.ExportAsFixedFormat Type:=xlTypePDF, OpenAfterPublish:=True, Filename:="H:\Documents\PDF\test1.pdf"
+End Sub
+
