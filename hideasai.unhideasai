@@ -1,0 +1,30 @@
+Sub hideasai()
+
+Dim ws As Worksheet: Set ws = Sheets("Detail")
+    Dim lr As Long
+    lr = ws.Cells(Rows.Count, "D").End(xlUp).Row
+
+    For Each cell In ws.Range(ws.Cells(2, "D"), ws.Cells(lr, "D"))
+       If cell.Value > ws.Cells(cell.Row, "O").Value Then
+          cell.EntireRow.Hidden = True
+       End If
+    Next cell
+
+End Sub
+
+
+##############################################
+
+
+Sub unhideasai()
+Dim ws As Worksheet: Set ws = Sheets("Detail")
+    Dim lr As Long
+    lr = ws.Cells(Rows.Count, "D").End(xlUp).Row
+
+    For Each cell In ws.Range(ws.Cells(2, "D"), ws.Cells(lr, "D"))
+       If cell.Value > ws.Cells(cell.Row, "O").Value Then
+          cell.EntireRow.Hidden = False
+       End If
+    Next cell
+    End Sub
+    
