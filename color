@@ -1,0 +1,18 @@
+    
+Sub morecolor1()
+Dim sh As Worksheet, lr As Long, fVal As Range, c As Range
+    Set sh = Sheets(1) 'Edit sheet name
+    lr = sh.Cells(Rows.Count, 1).End(xlUp).Row
+        For Each c In sh.Range("C2:C101") 'Assumes header row
+            Set fVal = sh.Range("B2:B" & lr).Find(c.Value, LookIn:=xlValues, LookAt:=xlWhole)
+                If Not fVal Is Nothing Then
+                    fAdr = fVal.Address
+                    Do
+                    c.Interior.ColorIndex = 6
+                    fVal.Interior.ColorIndex = 6
+                    fVal.Value = c.Value
+                    Set fVal = sh.Range("B2:B" & lr).FindNext(fVal)
+                    Loop While fVal.Address <> fAdr
+                End If
+        Next
+End Sub
