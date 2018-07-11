@@ -1,0 +1,45 @@
+Private Sub CommandButton1_DblClick(ByVal Cancel As MSForms.ReturnBoolean)
+Dim ws As Worksheet: Set ws = Sheets("nbi")
+Dim lr As Long
+lr = ws.Cells(Rows.Count, "D").End(xlUp).Row
+
+For Each cell In ws.Range(ws.Cells(5, "D"), ws.Cells(lr, "D"))
+   If cell = 0 Then
+      cell.EntireRow.Hidden = True
+   End If
+Next cell
+End Sub
+
+################################
+
+Private Sub CommandButton2_DblClick(ByVal Cancel As MSForms.ReturnBoolean)
+Dim ws As Worksheet: Set ws = Sheets("nbi")
+Dim lr As Long
+lr = ws.Cells(Rows.Count, "D").End(xlUp).Row
+
+For Each cell In ws.Range(ws.Cells(5, "D"), ws.Cells(lr, "D"))
+   If cell = 0 Then
+      cell.EntireRow.Hidden = False
+   End If
+Next cell
+
+End Sub
+
+#############################
+
+Private Sub Toggle_DblClick(ByVal Cancel As MSForms.ReturnBoolean)
+Dim pf As PivotField
+For Each pf In ActiveSheet.PivotTables("PivotTable2").DataFields
+    If pf.SourceName = "SP/UOM" Then
+        If pf.Function = xlSum Then
+            pf.Caption = "Count of SP/UOM"
+            pf.Function = xlCount
+        Else
+            pf.Caption = "Sum of SP/UOM"
+            pf.Function = xlSum
+        End If
+        Exit For
+    End If
+Next
+End Sub
+
