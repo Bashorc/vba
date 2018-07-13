@@ -1,0 +1,14 @@
+Sub azh()
+Dim ws As Worksheet
+Set ws = Sheets("Detail")
+
+Dim lr As Long
+lr = ws.Cells(Rows.Count, "B").End(xlUp).Row
+Range("F:I").NumberFormat = "General"
+Dim arr
+arr = Array("MFR", "CUSTLINE#", "PRICE (DYP)", "DELIVERY")
+ws.Range("F1:I1").Value = arr
+Dim ty
+ty = Array("=IF(H2=""NB"","""",AY2)", "=A2", "=IF(P2="""",""NB"",P2)", "=IF(BR2>(D2+AM2),""STOCK"",IF(AR2=""0 Weeks"","""",SUBSTITUTE(AR2,"" Weeks"","" WKS"")))")
+ws.Range("F2:I" & lr).Formula = ty
+End Sub
