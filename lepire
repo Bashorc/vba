@@ -12,7 +12,7 @@ mnt2 = "'H:\Documents\[" & mnt & ".xlsx]Sheet 1'" ' Change Sheet1 to the actual 
 Set xWb = Workbooks.Open("\\klxdata\homeshares\klxaero\nbi\Documents\" & mnt & ".xlsx")
 ActiveWindow.Visible = False
 lr = ws.Cells(Rows.Count, "B").End(xlUp).Row
-ty = Array("=INDEX(" & mnt & "!$R:$R,MATCH(1,(E2=" & mnt & "!$E:$E)*(J2=" & mnt & "!$J:$J),0))")
+ty = Array("=INDEX(" & mnt2 & "!$R:$R,MATCH(1,(E2=" & mnt2 & "!$E:$E)*(J2=" & mnt2 & "!$J:$J),0))")
 ws.Range("R2:R" & lr).FormulaArray = ty
 ThisWorkbook.UpdateLinks = xlUpdateLinksAlways
 Application.DisplayAlerts = True
