@@ -1,0 +1,20 @@
+Sub OOR()
+Dim ws As Worksheet
+Set ws = Sheets("Sheet 1")
+Dim lr As Long
+Dim mnt As String, mnt2 As String
+Dim xWb As Workbook
+
+ThisWorkbook.UpdateLinks = xlUpdateLinksNever
+Application.DisplayAlerts = False
+mnt = InputBox("Filename")
+mnt2 = "'H:\Documents\[" & mnt & ".xlsx]Sheet 1'" ' Change Sheet1 to the actual tabname
+Set xWb = Workbooks.Open("\\klxdata\homeshares\klxaero\nbi\Documents\" & mnt & ".xlsx")
+ActiveWindow.Visible = False
+lr = ws.Cells(Rows.Count, "B").End(xlUp).Row
+ty = Array("=INDEX(" & mnt & "!$R:$R,MATCH(1,(E2=" & mnt & "!$E:$E)*(J2=" & mnt & "!$J:$J),0))")
+ws.Range("R2:R" & lr).FormulaArray = ty
+ThisWorkbook.UpdateLinks = xlUpdateLinksAlways
+Application.DisplayAlerts = True
+xWb.Close savechanges:=False
+End Sub
