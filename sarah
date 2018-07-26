@@ -1,0 +1,16 @@
+Sub cacontinue2554545()
+Dim ws As Worksheet
+Set ws = Sheets("Sheet1")
+Dim lr As Long
+Dim mnt As String, mnt2 As String
+ThisWorkbook.UpdateLinks = xlUpdateLinksNever
+Application.DisplayAlerts = False
+mnt = InputBox("Filename")
+mnt2 = "'Z:\Sales\Toulouse\SARAH COURBET\EPCOR\[" & mnt & ".xlsx]Sheet1'" ' Change Sheet1 to the actual tabname
+lr = ws.Cells(Rows.Count, "B").End(xlUp).Row
+ty = "=INDEX(" & mnt2 & "!$G:$G,MATCH(1,(A2=" & mnt2 & "!$A:$A)*(C2=" & mnt2 & "!$C:$C),0))"
+ws.Range("H2").FormulaArray = ty
+ws.Range("H2").AutoFill Destination:=ws.Range("H2:H" & lr)
+ThisWorkbook.UpdateLinks = xlUpdateLinksAlways
+Application.DisplayAlerts = True
+End Sub
