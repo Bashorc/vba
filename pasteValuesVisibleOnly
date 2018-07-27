@@ -1,0 +1,10 @@
+Sub pasteValuesVisibleOnly()
+    Dim c As Range
+    For Each c In Selection
+        If c.Formula = "" Then Exit For
+        If Not ActiveSheet.Rows(c.Row).EntireRow.Hidden And c.Formula <> "" Then
+            c.Copy
+            c.PasteSpecial xlPasteValues
+        End If
+    Next
+End Sub
