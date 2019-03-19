@@ -1,1 +1,10 @@
 =SIERREUR(SI(CHERCHE("*VISA*";Feuil2!E31;1);"VISA");"")
+Sub Macro1()
+'
+' Macro1 Macro
+'
+TransactionID = Split(Split(Cells(1, 1), ":")(1), " ")(1)
+Range("A2").Value = TransactionID
+PaymentMean = Split(Split(Cells(1, 1), ":")(2), " ")(1)
+Range("A3").Value = PaymentMean
+End Sub
