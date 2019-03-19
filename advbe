@@ -8,3 +8,15 @@ Range("A2").Value = TransactionID
 PaymentMean = Split(Split(Cells(1, 1), ":")(2), " ")(1)
 Range("A3").Value = PaymentMean
 End Sub
+
+
+
+Sub Macro1()
+'
+' Macro1 Macro
+'
+TransactionID = Split(Split(Sheets("Feuil3").Range("E30"), ":")(1), " ")(1)
+Range("A2").Value = TransactionID
+PaymentMean = Split(Split(Sheets("test").Range("E30"), ":")(2), " ")(1)
+Range("A3").Value = PaymentMean
+End Sub
