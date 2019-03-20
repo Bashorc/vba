@@ -232,3 +232,266 @@ Range("Q" & lastRow).PasteSpecial Paste:=xlPasteValues, Operation:=xlNone, SkipB
     
 End Sub
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+Sub Macrotestfr()
+'
+' Macro1 Macro
+'
+Dim lastRow As String
+Sheets("test").Activate
+Dim bottomCell As Range
+Dim offsetCell As Range
+With Sheets("test")
+    Set Mmessage = .Cells.Find(what:="Message du client : ")
+    Set MmessageCell = Mmessage.Offset(1, 0)
+    Set facturation = .Cells.Find(what:="Adresse de facturation ")
+    Set facturationCell = facturation.Offset(1, 0)
+    Set nomCell = facturation.Offset(1, 0)
+    Set compagnieCell = facturation.Offset(2, 0)
+    Set adresseCell = facturation.Offset(3, 0)
+    Set paysCell = facturation.Offset(5, 0)
+    Set telCell = facturation.Offset(6, 0)
+    Set tellCell = facturation.Offset(9, 0)
+    Set villeCell = facturation.Offset(4, 0)
+    Set eemail = .Cells.Find(what:="Bravo !")
+    Set eemailCell = eemail.Offset(1, 0)
+    
+    Set ddate = .Cells.Find(what:="Détails de la commande ")
+    Set ddateCell = ddate.Offset(1, 0)
+    
+    Set produit = .Cells.Find(what:="Produit")
+    Set produitCell = produit.Offset(2, 0)
+    
+    Set prixu = .Cells.Find(what:="Prix unitaire")
+    Set prixuCell = prixu.Offset(2, 0)
+    
+    Set prixttc = .Cells.Find(what:="Prix total")
+    Set prixttcCell = prixttc.Offset(2, 0)
+    
+    Set tva = .Cells.Find(what:="TVA totale")
+    Set tvaCell = tva.Offset(0, 8)
+    
+    Set qtt = .Cells.Find(what:="Quantité")
+    Set qttCell = qtt.Offset(2, 0)
+    ' Now, your offsetCell has been created as a range, so go forth young padawan!
+End With
+Range("W1").Value = MmessageCell
+Range("W2").Value = nomCell
+Range("W3").Value = compagnieCell
+Range("W4").Value = adresseCell
+Range("W5").Value = paysCell
+Range("W6").Value = facturationCell
+Range("W7").Value = eemailCell
+Range("W8").Value = produitCell
+Range("W9").Value = prixuCell
+Range("W10").Value = prixttcCell
+Range("W11").Value = qttCell
+Range("W12").Value = ddateCell
+Range("W13").Value = telCell
+Range("W14").Value = tvaCell
+Range("W15").Value = villeCell
+
+Sheets("feuil1").Activate
+
+lastRow = ActiveSheet.Cells(Rows.Count, "B").End(xlUp).Row + 1
+TransactionID = Split(Split(Sheets("test").Range("W1"), ":")(1), " ")(1)
+Range("C" & lastRow).Value = TransactionID
+PaymentMean = Split(Split(Sheets("test").Range("W1"), ":")(2), " ")(1)
+Range("AB" & lastRow).Value = PaymentMean
+
+prenom = Split(Split(Sheets("test").Range("W6"), " ")(0), " ")(0)
+Range("H" & lastRow).Value = prenom
+nom = Split(Split(Sheets("test").Range("W6"), " ")(1), " ")(0)
+Range("G" & lastRow).Value = nom
+dddate = Split(Split(Sheets("test").Range("W12"), " ")(5), " ")(0)
+Range("E" & lastRow).Value = dddate
+eeemail = Split(Split(Sheets("test").Range("W7"), "(")(1), ")")(0)
+Range("I" & lastRow).Value = eeemail
+
+ville = Split(Split(Sheets("test").Range("W15"), " ")(1), " ")(0)
+Range("M" & lastRow).Value = ville
+
+ Sheets("test").Range("W3").Copy
+Range("F" & lastRow).PasteSpecial Paste:=xlPasteValues, Operation:=xlNone, SkipBlanks _
+        :=False, Transpose:=False
+        
+Sheets("test").Range("W4").Copy
+Range("K" & lastRow).PasteSpecial Paste:=xlPasteValues, Operation:=xlNone, SkipBlanks _
+        :=False, Transpose:=False
+Sheets("test").Range("W5").Copy
+Range("N" & lastRow).PasteSpecial Paste:=xlPasteValues, Operation:=xlNone, SkipBlanks _
+        :=False, Transpose:=False
+Sheets("test").Range("W13").Copy
+Range("J" & lastRow).PasteSpecial Paste:=xlPasteValues, Operation:=xlNone, SkipBlanks _
+        :=False, Transpose:=False
+Sheets("test").Range("W9").Copy
+Range("R" & lastRow).PasteSpecial Paste:=xlPasteValues, Operation:=xlNone, SkipBlanks _
+        :=False, Transpose:=False
+Sheets("test").Range("W11").Copy
+Range("S" & lastRow).PasteSpecial Paste:=xlPasteValues, Operation:=xlNone, SkipBlanks _
+        :=False, Transpose:=False
+Sheets("test").Range("W14").Copy
+Range("U" & lastRow).PasteSpecial Paste:=xlPasteValues, Operation:=xlNone, SkipBlanks _
+        :=False, Transpose:=False
+Sheets("test").Range("W10").Copy
+Range("V" & lastRow).PasteSpecial Paste:=xlPasteValues, Operation:=xlNone, SkipBlanks _
+        :=False, Transpose:=False
+
+Sheets("test").Range("W8").Copy
+Range("Q" & lastRow).PasteSpecial Paste:=xlPasteValues, Operation:=xlNone, SkipBlanks _
+        :=False, Transpose:=False
+
+        
+
+    Range("T" & lastRow).Select
+    Application.CutCopyMode = False
+    ActiveCell.FormulaR1C1 = "=RC[2]-RC[1]"
+    Range("T" & lastRow).Select
+    
+End Sub
+Sub MacrotestEN()
+'
+' Macro1 Macro
+'
+Dim lastRow As String
+
+Sheets("test").Activate
+    Dim bottomCell As Range
+Dim offsetCell As Range
+With Sheets("test")
+    Set Mmessage = .Cells.Find(what:="Customer message:")
+    Set MmessageCell = Mmessage.Offset(1, 0)
+    Set facturation = .Cells.Find(what:="Billing address ")
+    Set facturationCell = facturation.Offset(1, 0)
+    Set nomCell = facturation.Offset(1, 0)
+    Set compagnieCell = facturation.Offset(2, 0)
+    Set adresseCell = facturation.Offset(3, 0)
+    Set villeCell = facturation.Offset(4, 0)
+    Set paysCell = facturation.Offset(5, 0)
+    Set telCell = facturation.Offset(6, 0)
+    Set tellCell = facturation.Offset(9, 0)
+    Set eemail = .Cells.Find(what:="Congratulations! ")
+    Set eemailCell = eemail.Offset(1, 0)
+    
+    Set ddate = .Cells.Find(what:="Order details ")
+    Set ddateCell = ddate.Offset(1, 0)
+    
+    Set produit = .Cells.Find(what:="Product")
+    Set produitCell = produit.Offset(2, 0)
+    
+    Set prixu = .Cells.Find(what:="Unit price")
+    Set prixuCell = prixu.Offset(2, 0)
+    
+    Set prixttc = .Cells.Find(what:="Total price")
+    Set prixttcCell = prixttc.Offset(2, 0)
+    
+    Set tva = .Cells.Find(what:="Total Tax paid")
+    Set tvaCell = tva.Offset(0, 1)
+    
+    Set qtt = .Cells.Find(what:="Quantity")
+    Set qttCell = qtt.Offset(2, 0)
+    ' Now, your offsetCell has been created as a range, so go forth young padawan!
+End With
+Range("W1").Value = MmessageCell
+Range("W2").Value = nomCell
+Range("W3").Value = compagnieCell
+Range("W4").Value = adresseCell
+Range("W5").Value = paysCell
+Range("W6").Value = facturationCell
+Range("W7").Value = eemailCell
+Range("W8").Value = produitCell
+Range("W9").Value = prixuCell
+Range("W10").Value = prixttcCell
+Range("W11").Value = qttCell
+Range("W12").Value = ddateCell
+Range("W13").Value = telCell
+Range("W14").Value = tvaCell
+Range("W15").Value = villeCell
+
+
+
+
+
+Sheets("feuil1").Activate
+
+
+lastRow = ActiveSheet.Cells(Rows.Count, "B").End(xlUp).Row + 1
+TransactionID = Split(Split(Sheets("test").Range("W1"), ":")(1), " ")(1)
+Range("C" & lastRow).Value = TransactionID
+PaymentMean = Split(Split(Sheets("test").Range("W1"), ":")(2), " ")(1)
+Range("AB" & lastRow).Value = PaymentMean
+
+prenom = Split(Split(Sheets("test").Range("W6"), " ")(0), " ")(0)
+Range("H" & lastRow).Value = prenom
+nom = Split(Split(Sheets("test").Range("W6"), " ")(1), " ")(0)
+Range("G" & lastRow).Value = nom
+dddate = Split(Split(Sheets("test").Range("W12"), " ")(4), " ")(0)
+Range("E" & lastRow).Value = dddate
+eeemail = Split(Split(Sheets("test").Range("W7"), "(")(1), ")")(0)
+Range("I" & lastRow).Value = eeemail
+
+ville = Split(Split(Sheets("test").Range("W15"), " ")(1), " ")(0)
+Range("M" & lastRow).Value = ville
+
+ Sheets("test").Range("W3").Copy
+Range("F" & lastRow).PasteSpecial Paste:=xlPasteValues, Operation:=xlNone, SkipBlanks _
+        :=False, Transpose:=False
+        
+Sheets("test").Range("W4").Copy
+Range("K" & lastRow).PasteSpecial Paste:=xlPasteValues, Operation:=xlNone, SkipBlanks _
+        :=False, Transpose:=False
+Sheets("test").Range("W5").Copy
+Range("N" & lastRow).PasteSpecial Paste:=xlPasteValues, Operation:=xlNone, SkipBlanks _
+        :=False, Transpose:=False
+Sheets("test").Range("W13").Copy
+Range("J" & lastRow).PasteSpecial Paste:=xlPasteValues, Operation:=xlNone, SkipBlanks _
+        :=False, Transpose:=False
+Sheets("test").Range("W9").Copy
+Range("R" & lastRow).PasteSpecial Paste:=xlPasteValues, Operation:=xlNone, SkipBlanks _
+        :=False, Transpose:=False
+Sheets("test").Range("W11").Copy
+Range("S" & lastRow).PasteSpecial Paste:=xlPasteValues, Operation:=xlNone, SkipBlanks _
+        :=False, Transpose:=False
+Sheets("test").Range("W14").Copy
+Range("U" & lastRow).PasteSpecial Paste:=xlPasteValues, Operation:=xlNone, SkipBlanks _
+        :=False, Transpose:=False
+Sheets("test").Range("W10").Copy
+Range("V" & lastRow).PasteSpecial Paste:=xlPasteValues, Operation:=xlNone, SkipBlanks _
+        :=False, Transpose:=False
+
+Sheets("test").Range("W8").Copy
+Range("Q" & lastRow).PasteSpecial Paste:=xlPasteValues, Operation:=xlNone, SkipBlanks _
+        :=False, Transpose:=False
+
+        
+
+    Range("T" & lastRow).Select
+    Application.CutCopyMode = False
+    ActiveCell.FormulaR1C1 = "=RC[2]-RC[1]"
+    Range("T" & lastRow).Select
+    
+End Sub
