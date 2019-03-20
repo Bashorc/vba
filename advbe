@@ -16,15 +16,25 @@ Dim bottomCell As Range
 Dim offsetCell As Range
 With Sheets("test")
     Set Mmessage = .Cells.Find(what:="Message du client : ")
-    Set nomCell = Mmessage.Offset(1, 0)
-    Set compagnieCell = Mmessage.Offset(2, 0)
-    Set adresseCell = Mmessage.Offset(4, 0)
-    Set paysCell = Mmessage.Offset(7, 0)
+    Set MmessageCell = Mmessage.Offset(1, 0)
     Set facturation = .Cells.Find(what:="Adresse de facturation ")
     Set facturationCell = facturation.Offset(1, 0)
+    Set nomCell = facturation.Offset(1, 0)
+    Set compagnieCell = facturation.Offset(2, 0)
+    Set adresseCell = facturation.Offset(4, 0)
+    Set paysCell = facturation.Offset(7, 0)
+    
+    Set eemail = .Cells.Find(what:="Bravo !")
+    Set emailCell = eemail.Offset(1, 0)
     ' Now, your offsetCell has been created as a range, so go forth young padawan!
 End With
-Range("R30").Value = offsetCell
+Range("R29").Value = MmessageCell
+Range("R30").Value = nomCell
+Range("R31").Value = compagnieCell
+Range("R32").Value = adresseCell
+Range("R33").Value = paysCell
+Range("R34").Value = facturationCell
+Range("R35").Value = eemailCell
 End Sub
 
 
