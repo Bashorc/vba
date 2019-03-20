@@ -40,3 +40,55 @@ Range("H" & lastRow).Value = prenom
 nom = Split(Split(Sheets("test").Range("C22"), " ")(1), " ")(0)
 Range("G" & lastRow).Value = nom
 End Sub
+
+
+
+
+
+
+
+
+
+
+
+Sub Macro1()
+'
+' Macro1 Macro
+'
+Dim lastRow As String
+
+lastRow = ActiveSheet.Cells(Rows.Count, "B").End(xlUp).Row + 1
+TransactionID = Split(Split(Sheets("test").Range("E30"), ":")(1), " ")(1)
+Range("C" & lastRow).Value = TransactionID
+PaymentMean = Split(Split(Sheets("test").Range("E30"), ":")(2), " ")(1)
+Range("AB" & lastRow).Value = PaymentMean
+
+prenom = Split(Split(Sheets("test").Range("C22"), " ")(0), " ")(0)
+Range("H" & lastRow).Value = prenom
+nom = Split(Split(Sheets("test").Range("C22"), " ")(1), " ")(0)
+Range("G" & lastRow).Value = nom
+
+ Sheets("test").Range("C23").Copy
+Range("F" & lastRow).PasteSpecial Paste:=xlPasteValues, Operation:=xlNone, SkipBlanks _
+        :=False, Transpose:=False
+        
+Sheets("test").Range("C24").Copy
+Range("I" & lastRow).PasteSpecial Paste:=xlPasteValues, Operation:=xlNone, SkipBlanks _
+        :=False, Transpose:=False
+Sheets("test").Range("G27").Copy
+Range("N" & lastRow).PasteSpecial Paste:=xlPasteValues, Operation:=xlNone, SkipBlanks _
+        :=False, Transpose:=False
+Sheets("test").Range("F11").Copy
+Range("R" & lastRow).PasteSpecial Paste:=xlPasteValues, Operation:=xlNone, SkipBlanks _
+        :=False, Transpose:=False
+Sheets("test").Range("I11").Copy
+Range("S" & lastRow).PasteSpecial Paste:=xlPasteValues, Operation:=xlNone, SkipBlanks _
+        :=False, Transpose:=False
+Sheets("test").Range("K16").Copy
+Range("U" & lastRow).PasteSpecial Paste:=xlPasteValues, Operation:=xlNone, SkipBlanks _
+        :=False, Transpose:=False
+Sheets("test").Range("K17").Copy
+Range("V" & lastRow).PasteSpecial Paste:=xlPasteValues, Operation:=xlNone, SkipBlanks _
+        :=False, Transpose:=False
+    
+End Sub
