@@ -11,14 +11,20 @@ End Sub
 
 
 
-Sub Macro1()
-'
-' Macro1 Macro
-'
-TransactionID = Split(Split(Sheets("Feuil3").Range("E30"), ":")(1), " ")(1)
-Range("A2").Value = TransactionID
-PaymentMean = Split(Split(Sheets("test").Range("E30"), ":")(2), " ")(1)
-Range("A3").Value = PaymentMean
+Sub t()
+Dim bottomCell As Range
+Dim offsetCell As Range
+With Sheets("test")
+    Set Mmessage = .Cells.Find(what:="Message du client : ")
+    Set nomCell = Mmessage.Offset(1, 0)
+    Set compagnieCell = Mmessage.Offset(2, 0)
+    Set adresseCell = Mmessage.Offset(4, 0)
+    Set paysCell = Mmessage.Offset(7, 0)
+    Set facturation = .Cells.Find(what:="Adresse de facturation ")
+    Set facturationCell = facturation.Offset(1, 0)
+    ' Now, your offsetCell has been created as a range, so go forth young padawan!
+End With
+Range("R30").Value = offsetCell
 End Sub
 
 
